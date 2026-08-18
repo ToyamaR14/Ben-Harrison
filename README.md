@@ -7,8 +7,8 @@ The application includes separate Tenant and Admin roles.
 # Test Accounts
 For demonstration purposes, you can use the following accounts:
 
-Tenant: quackers@gmail.com
-Admin: brazzblood.m@gmail.com
+Tenant: quackers@gmail.com pass: 1234
+Admin: brazzblood.m@gmail.com pass: 12345
 Demo passwords are provided separately or can be requested if needed.
 
 # Notes
