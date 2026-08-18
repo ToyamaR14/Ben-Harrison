@@ -1,5 +1,6 @@
-# Ben-Harrison
-Capstone project developed as part of my work portfolio.
+# Tenant Management System
+
+Ben Harrison Residence Management System developed as a capstone project.
 
 # Features
 
