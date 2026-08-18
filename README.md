@@ -4,3 +4,4 @@ emails registered are mostly required gmail verification but at admin page can s
 
 accounts
 quackers@gmail.com pass: 1234 : tenant
+brazzblood.m@gmail.com pass: 12345 : admin
