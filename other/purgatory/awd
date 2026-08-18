@@ -1,0 +1,86 @@
+<?php
+if (isset($_POST['logsubmit'])) {
+
+    // Retrieve and sanitize inputs
+    $email = stripslashes($_POST['email']);
+    $email = mysqli_real_escape_string($con, $email);
+    $password = stripslashes($_POST['password']);
+    $password = mysqli_real_escape_string($con, $password);
+
+    $query = "SELECT tenant_tbl.*, room_tbl.status_id AS room_status_id
+              FROM tenant_tbl
+              LEFT JOIN room_tbl 
+              ON tenant_tbl.tenant_id = room_tbl.tenant_id
+              WHERE tenant_tbl.email = ?";
+    $stmt = mysqli_prepare($con, $query);
+    mysqli_stmt_bind_param($stmt, "s", $email);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+    $row = mysqli_fetch_assoc($result);
+    mysqli_stmt_close($stmt);
+
+    if ($row) {
+        if ($row['user_type_id'] == 1) {
+            if (password_verify($password, $row['password'])) {
+
+                $logType = 1; // Assuming 1 represents login
+                $adminId = $row['tenant_id'];
+                $dateEntry = date('Y-m-d H:i:s');
+                $userIp = $_SERVER['REMOTE_ADDR'];
+
+                $insertLogQuery = "INSERT INTO log_tbl (log_type_id, tenant_id, date_entry, user_ip) VALUES (?, ?, ?, ?)";
+                $stmt = mysqli_prepare($con, $insertLogQuery);
+                mysqli_stmt_bind_param($stmt, "iiss", $logType, $adminId, $dateEntry, $userIp);
+                mysqli_stmt_execute($stmt);
+                mysqli_stmt_close($stmt);
+
+                $_SESSION['email'] = $email;
+                $_SESSION['last_activity'] = time();
+                header('Location: dashboard.php');
+                exit;
+            } else {
+                echo "<script type='text/javascript'>";
+                echo "alert('Invalid Credentials');";
+                echo "window.location.href = 'login.php';";
+                echo "</script>";
+            }
+        } elseif ($row['user_type_id'] == 2) {
+            if ($row['status_id'] == '11' && $row['room_status_id'] == '11') {
+                if (password_verify($password, $row['password'])) {
+
+                    $logType = 1; // Assuming 1 represents login
+                    $tenantId = $row['tenant_id'];
+                    $dateEntry = date('Y-m-d H:i:s');
+                    $userIp = $_SERVER['REMOTE_ADDR'];
+
+                    $insertLogQuery = "INSERT INTO log_tbl (log_type_id, tenant_id, date_entry, user_ip) VALUES (?, ?, ?, ?)";
+                    $stmt = mysqli_prepare($con, $insertLogQuery);
+                    mysqli_stmt_bind_param($stmt, "iiss", $logType, $tenantId, $dateEntry, $userIp);
+                    mysqli_stmt_execute($stmt);
+                    mysqli_stmt_close($stmt);
+
+                    // Set session and redirect to tenant dashboard
+                    $_SESSION['email'] = $email;
+                    $_SESSION['last_activity'] = time(); // Set the session's last activity time
+                    header('Location: home.php');
+                    exit;
+                } else {
+                    echo "<script type='text/javascript'>";
+                    echo "alert('Invalid Credentials');";
+                    echo "window.location.href = 'login.php';";
+                    echo "</script>";
+                }
+            } else {
+                echo "<script type='text/javascript'>";
+                echo "alert('Your account or room is inactive. Please contact support.');";
+                echo "window.location.href = 'login.php';";
+                echo "</script>";
+            }
+        }
+    } else {
+        echo "<script type='text/javascript'>";
+        echo "alert('Invalid Credentials');";
+        echo "window.location.href = 'login.php';";
+        echo "</script>";
+    }
+}
