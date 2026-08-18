@@ -1,0 +1,19 @@
+user_tbl
+	email_add
+	password
+	ID 1=admin , 1001 = tenant
+	user_type (admin or tenant)
+
+SELECT *Orders.OrderID, Customers.CustomerName, Orders.OrderDate
+FROM Orders
+INNER JOIN Customers
+ON Orders.CustomerID=Customers.CustomerID;
+
+
+
+
+
+email : BH.benharrisonofficial
+password : BenH@rr1son1
+
+keox mkrb uoal qeyi

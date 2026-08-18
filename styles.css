@@ -1,0 +1,1180 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    --color-primary:         #7380ec;
+    --color-danger:          #ebb70c;
+    --color-success:         #622405;
+    --color-warning:         #ffbb55;
+    --color-white:           #fff;
+    --color-info-dark:       #9595d0;
+    --color-info-light:      #dce1eb;
+    --color-dark:            #281653;
+    --color-light:           rgba(132, 139, 200, 0.18);
+    --color-primary-variant: #111e88;
+    --color-background:      #ededed;
+    --color-box:             #ff0000;
+
+    --card-border-radius:   2rem;
+    --border-radius-1:      0.4rem;
+    --border-radius-2:      0.8rem;
+    --border-radius-3:      1.2rem;
+
+    --card-padding:         1.8rem;
+    --padding-1:            1.2rem;
+    
+    --box-shadow:           0 2rem 3rem var(--color-light);
+}
+
+*{
+    font-family:'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    border: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+#time {
+    font-size: 2em;
+}
+
+form {
+    display: inline;
+}
+
+html {
+    font-size: 14px;
+}
+
+body {
+    width: 100vw;
+    font-size: 1rem;
+    height: 100vh;
+    background: var(--color-background);
+    user-select: none;
+    overflow-y: scroll;
+    color: var(--color-dark);
+    overflow-x: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: thin;
+}
+    
+body::-webkit-scrollbar {
+    display: none;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+    width: 10px;
+}
+
+body::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.container {
+    position: absolute;
+    display: flex;
+    width: 100%;
+    margin: 0 auto;
+    gap: 1.8rem;
+}
+
+a {
+    color: var(--color-dark);
+}
+
+img {
+    display: block;
+    width: 100%;
+}
+
+h1 {
+    font-weight: 800;
+    font-size: 1.8rem;
+}
+
+h2 {
+    font-size: 1.4rem;
+}
+
+h3 {
+    font-size: 0.90rem;
+}
+
+h4 {
+    font-size: 0.8rem;
+}
+
+h5 {
+    font-size: 0.77rem;
+}
+
+h6 {
+    font-size: 1.2rem;
+}
+
+small {
+    font-size: 0.75rem;
+}
+
+.anim {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: moveup 0.5s linear forwards;
+}
+
+@keyframes moveup {
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+.text-muted {
+    color: var(--color-info-dark);
+}
+
+p {
+    color: var(--color-dark-variant);
+}
+
+b {
+    color: var(--color-dark);
+}
+
+.primary {
+    color: var(--color-primary);
+}
+.danger {
+    color: var(--color-danger);
+}
+.success {
+    color: var(--color-success);
+}
+.warning {
+    color: var(--color-warning);
+}
+
+script {
+        display: none;
+}
+
+aside {
+    height: 100dvh;
+    position: fixed;
+    width: 12%;
+    background: var(--color-background);
+    z-index: 1;
+}
+
+aside .top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1.4rem;
+}
+
+aside .logo {
+    display: flex;
+    gap: 0.8rem;
+    text-align: center;
+}
+
+.user {
+    position: fixed;
+    width: 100%;
+    text-align: right;
+    padding-right: 25px;
+    padding-top: 12px;
+    z-index: 1;
+    background: var(--color-background);
+}
+
+.showemail {
+    position: relative;
+    display: contents;
+}
+
+.notification-container {
+    position: relative;
+    display: inline-block;
+    margin-left: 20px;
+    cursor: pointer;
+    top: 4px;
+}
+
+.notification-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    color: #333;
+}
+
+.notif-count {
+    background-color: red;
+    color: white;
+    font-size: 12px;
+    border-radius: 50%;
+    padding: 3px 7px;
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    display: none;
+}
+
+.notification-dropdown {
+    display: none;
+    position: absolute;
+    right: 0;
+    background: white;
+    width: 250px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    overflow: hidden;
+    z-index: 100;
+}
+
+.notification-dropdown h3 {
+    background: #f4f4f4;
+    padding: 10px;
+    margin: 0;
+    font-size: 16px;
+    text-align: center;
+}
+
+.notification-dropdown ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 200px;
+    overflow-y: auto;
+    background: white;
+    text-align: center;
+}
+
+.notification-dropdown ul li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+    background: white;
+}
+
+.notification-dropdown ul li:hover {
+    background: #f9f9f9;
+}
+
+.notif-link {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    display: block;
+    padding: 8px 12px;
+}
+
+.notif-link:hover {
+    background-color: #f5f5f5;
+}
+
+.notif-btn {
+    width: 100%;
+    background: white;
+    border: none;
+    text-align: left;
+    padding: 8px 12px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.notif-btn:hover {
+    background-color: #f5f5f5;
+}
+
+/*************************
+*******SIDE BAR******
+**************************/
+
+aside .sidebar {
+    display: flex;
+    flex-direction: column;
+    height: 100dvh;
+    position: relative;
+    top: 5rem;
+}
+
+aside h3 {
+    font-weight: 500;
+}
+
+aside .sidebar a {
+    display: flex;
+    color: var(--color-dark);
+    margin-left: 2rem;
+    gap: 1rem;
+    align-items: center;
+    position: relative;
+    height: 3.7rem;
+    transition: all 300ms ease;
+}
+
+aside .sidebar a span {
+    font-size: 1.6rem;
+    transition: all 300ms ease;
+}
+
+aside .sidebar a:hover span {
+    margin-left: 1rem;
+}
+
+aside .sidebar .count {
+    position: relative;
+    background: var(--color-danger);
+    color: var(--color-white);
+    padding: 2px 10px;
+    font-size: 11px;
+    border-radius: var(--border-radius-1);
+    left: -10px;
+}
+
+/*************************
+*******RESERVATION******
+**************************/
+
+main {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 5dvh;
+    width: 100%;
+    max-width: 1600px;
+    left: 19rem;
+}
+
+main .brief-info {
+    display: grid;
+    text-align: center;
+    grid-template-columns: repeat(3,1fr);
+    gap: 1rem;
+    width: 50%;
+}
+
+main .brief-info .status {
+    width: 100%;
+    transform: translateX(55rem);
+}
+
+main .brief-info > div {
+    background: var(--color-white);
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radius);
+    margin-top: 1rem;
+    box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+}
+
+main .brief-info > div:hover {
+    box-shadow: none;
+
+}
+
+main .brief-info h1 {
+    font-size: 3rem;
+}
+
+main .multi-table {
+    position: relative;
+    width: 100%;
+    margin-top: 3rem;
+}
+
+main .multi-table h1 {
+    margin-bottom: 2rem;
+}
+
+main .multi-table button {
+    float: right;
+    margin-bottom: 1.5rem;
+    margin-right: 4rem;
+    background: red;
+    color: var(--color-white);
+    border-radius: 40px;
+    padding: 10px 28px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 500ms ease;
+}
+
+main .multi-table button:hover {
+    background: var(--color-warning);
+    color: var(--color-dark);
+}
+
+main .multi-table tr th {
+    font-size: 1.2rem;
+}
+
+main .multi-table table {
+    background: var(--color-white);
+    width: 100%;
+    border-radius: var(--card-border-radius);
+    padding: var(--card-padding);
+    text-align: center;
+    box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+}
+
+main .multi-table table:hover {
+    box-shadow: none;
+}
+
+main .multi-table td button {
+    text-decoration: none;
+    color: var(--color-info-light);
+    background: var(--color-dark);
+    padding: 10px 14px;
+    border-radius: 100%;
+    float: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    top: -2px;
+    transition: all 300ms ease;
+}
+
+main .multi-table td button[type="accept"] {
+    text-decoration: none;
+    color: var(--color-white);
+    background: var(--color-primary-variant);
+    padding: 10px 17px;
+    border-radius: 100%;
+    float: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    transition: all 300ms ease;
+}
+
+main .multi-table td button[type="accept"]:hover {
+    color: var(--color-dark);
+    background: var(--color-white);
+}
+
+main .multi-table td button[type="cancel"] {
+    text-decoration: none;
+    color: var(--color-white);
+    background: var(--color-box);
+    padding: 10px 17px;
+    border-radius: 100%;
+    float: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    transition: all 300ms ease;
+}
+
+main .multi-table td button[type="cancel"]:hover {
+    color: var(--color-dark);
+    background: var(--color-white);
+}
+
+main .multi-table td button .acceptbtn {
+    background: var(--color-primary);
+}
+
+main .multi-table td button:hover {
+    color: var(--color-dark);
+    background: var(--color-warning);
+}
+
+main table tbody td {
+    height: 3rem;
+    border-bottom: 1px solid var(--color-light);
+}
+
+main table tbody td.tenant-btns {
+    height: 3rem;
+    border-bottom: 1px solid var(--color-light);
+}
+
+main .multi-table footer {
+    margin-top: 2rem;
+    margin-right: 5rem;
+    float: right;
+    font-size: 1.25rem;
+}
+
+main .multi-table footer a {
+    border: 1px solid black;
+    display: inline-block;
+    padding: 5px 15px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 300ms ease ;
+}
+
+main .multi-table footer a:hover {
+    background: var(--color-info-dark);
+    color: var(--color-info-light);
+}
+
+main button[type="submit"] {
+    position: relative;
+    float: left;
+    top: 2rem;
+    cursor: pointer;
+}
+
+main button[type="reserve"] {
+    position: relative;
+    padding: 8px 20px;
+    top: 2.5rem;
+}
+
+main button[type="clearsearch"] {
+    position: relative;
+    display: none;
+    background: none;
+    color: black;
+    right: 14rem;
+    padding: 5px 20px;
+    top: 2.5em;
+    float: left;
+}
+
+main button[type="clearsearch"]:hover {
+    background: none;
+}
+
+main input[type="checkbox"] {
+    position: relative;
+    width: 15px;
+    height: 15px;
+    top: 3px;
+    margin-top: 5px;
+}
+
+main button[type="delete-res"] {
+    position: relative;
+    padding: 8px 14px;
+    top: 2.5rem;
+    float: right;
+    left: 3rem;
+    background: var(--color-info-dark);
+}
+
+main button[type="delete-con"] {
+    position: relative;
+    padding: 8px 14px;
+    top: 2.5rem;
+    float: left;
+    right: 3rem;
+    background: var(--color-info-dark);
+}
+
+/*************************
+*******DASHBOARD******
+**************************/
+
+main .recent-table {
+    display: flex;
+    flex-direction: column;
+    margin-top: 4rem;
+    width: 100%;
+}
+
+.t1 {
+    animation-delay: .1s;
+}
+
+.t2 {
+    animation-delay: .2s;
+}
+
+.t3 {
+    animation-delay: .3s;
+}
+
+main .recent-table table {
+    background: var(--color-white);
+    width: 100%;
+    border-radius: var(--card-border-radius);
+    padding: var(--card-padding);
+    text-align: center;
+    box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+}
+
+main .recent-table table:hover {
+    box-shadow: none;
+}
+
+main .recent-table tr th {
+    font-size: 1.2rem;
+}
+
+main sub .sub-recent table {
+    background: var(--color-white);
+    width: 100%;
+    border-radius: var(--card-border-radius);
+    padding: var(--card-padding);
+    text-align: center;
+    box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+}
+
+main sub .sub-recent table:hover {
+    box-shadow: none;
+}
+
+main sub .sub-tenant tr th {
+    font-size: 1.2rem;
+}
+
+sub {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 3rem;
+    text-align: center;
+}
+
+.mid {
+    display: grid;
+}
+
+/*************************
+*******MODAL******
+**************************/
+
+main .modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+main .modal-con {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+main .modal-content {
+    background-color: #fff;
+    width: 46dvh;
+    padding: 20px;
+    border-radius: 5px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+main .modal-content-con {
+    background-color: #fff;
+    width: 60vh;
+    height: 57vh;
+    padding: 20px;
+    border-radius: 5px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+main input[type="see"] {
+    position: relative;
+    font-size: 1rem;
+    padding: 10px;
+    width: 100%;
+    background: var(--color-info-light);
+    font-size: 1rem;
+    border-radius: 10px;
+}
+
+main input[type="view"] {
+    position: absolute;
+    font-size: 1rem;
+    background: none;
+    width: 50%;
+    margin-top: -7.8%;
+    margin-left: 40%;
+    font-size: 1rem;
+}
+
+main textarea[type="textbox"]{
+    position: relative;
+    top: 3vh;
+    font-size: 1rem;
+    padding: 10px;
+    background: var(--color-light);
+    width: 100%;
+    height: 14rem;
+    border-radius: 15px;
+    resize: none;
+}
+
+main input[type="text"] {
+    width: 100%;
+    margin-top: 1rem;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+main input[type="number"] {
+    width: 100%;
+    margin-top: 1rem;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+main input[type="email"] {
+    width: 100%;
+    margin-top: 1rem;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+main select[type="option"] {
+    width: 100%;
+    margin-top: 1rem;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+main input[type="password"] {
+    width: 100%;
+    margin-top: 1rem;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+main input[type="show"] {
+    width: 100%;
+    margin-top: 1rem;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+main input[type="tel"] {
+    width: 100%;
+    margin-top: 1rem;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+main input[type="submit"] {
+    color: var(--color-info-light);
+    background: var(--color-box);
+    padding: 10px 20px;
+    margin-top: 2.5rem;
+    border-radius: 5px;
+    float: right;
+    cursor: pointer;
+}
+
+main button[type="close"] {
+    position: inherit;
+    background-color: var(--color-box);
+    color: var(--color-info-light);
+    padding: 10px 20px;
+    margin-top: 2.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    float: left;
+}
+
+main label[type="head"]{
+    background-color: red;
+}
+
+main button[type="add"]{
+    position: relative;
+    padding: 8px 20px;
+    top: 2.5rem;
+}
+
+main .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+main .checkb {
+    position: relative;
+}
+
+main .multi-table td button[type="edit"] {
+    text-decoration: none;
+    color: var(--color-white);
+    background: var(--color-primary-variant);
+    padding: 10px 14px;
+    border-radius: 100%;
+    float: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    transition: all 300ms ease;
+}
+
+main .multi-table td button[type="edit"]:hover {
+    color: var(--color-dark);
+    background: var(--color-white);
+}
+
+main .multi-table td button[type="delete"] {
+    text-decoration: none;
+    color: var(--color-white);
+    background: var(--color-box);
+    padding: 10px 14px;
+    border-radius: 100%;
+    float: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    transition: all 300ms ease;
+}
+
+main .multi-table td button[type="delete"]:hover {
+    color: var(--color-dark);
+    background: var(--color-white);
+}
+
+/*************************
+*******SEARCH******
+**************************/
+
+main input[type="textsearch"] {
+    position: relative;
+    padding: 10px 20px;
+    width: 20%;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    bottom: -1rem;
+    margin-top: 1.5rem;
+    float: left;
+}
+
+main button[type="search"] {
+    position: relative;
+    background-color: var(--color-box);
+    color: var(--color-info-light);
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding: 8px 20px;
+    bottom: -1rem;
+    margin-top: 1.5rem;
+    cursor: pointer;
+    float: left;
+}
+
+/*************************
+*******DATE******
+**************************/
+
+main input[type="datetime-local"] {
+    position: relative;
+    display: grid;
+    align-items: center;
+    left: 12dvh;
+    bottom: 1dvh;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 32px;
+    font-size: 14px;
+  }
+
+
+/*************************
+*******LOGS******
+**************************/
+
+main .log-table {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 70px;
+}
+
+main .log-table table {
+    background: var(--color-white);
+    width: 100%;
+    margin-top: 25px;
+    border-radius: var(--card-border-radius);
+    padding: var(--card-padding);
+    text-align: center;
+    box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+}
+
+main .log-table table:hover {
+    box-shadow: none;
+}
+
+main .log-table tr th {
+    font-size: 1.2rem;
+}
+
+main .log-table footer {
+    text-align: center;
+    margin-top: 2rem;
+    margin-right: 5rem;
+    margin-bottom: 3rem;    
+    font-size: 1.25rem;
+}
+
+main .log-table footer a {
+    border: 1px solid black;
+    display: inline-block;
+    padding: 5px 15px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 300ms ease ;
+}
+
+main .log-table footer a:hover {
+    background: var(--color-info-dark);
+    color: var(--color-info-light);
+}
+
+.searchbar {
+    color: red;
+}
+
+main button[type="search-log"] {
+    position: relative;
+    background-color: var(--color-box);
+    color: var(--color-info-light);
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding: 10px 20px;
+    bottom: -1rem;
+    margin-top: 1.5rem;
+    cursor: pointer;
+    float: left;
+}
+
+main .clearbtn {
+    position: relative;
+    display: none;
+    background: none;
+    color: black;
+    right: 9rem;
+    padding: 14px 20px;
+    top: 2.5em;
+    cursor: pointer;
+    float: left;
+}
+
+main .logbtn {
+    margin-top: 30px;
+}
+
+.buttonlog {
+    position: relative;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    float: right;
+    right: 5%;
+    color: white;
+    background-color: var(--color-primary);
+    border: none;
+    border-radius: 50px;
+    transition: background-color 0.3s;
+}
+
+.buttonlog:hover {
+    background-color: var(--color-primary-variant);
+}
+
+.buttonlog:hover::after {
+    content: " →";
+}
+
+.buttonlog1  {
+    position: relative;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    float: right;
+    color: white;
+    background-color: var(--color-primary);
+    border: none;
+    border-radius: 50px;
+    transition: background-color 0.3s;
+}
+
+.buttonlog1:hover {
+    background-color: var(--color-primary-variant);
+}
+
+.buttonlog1:hover::after {
+    content: " →";
+}
+
+.buttonlogr {
+    position: relative;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    float: left;
+    color: white;
+    background-color: var(--color-primary);
+    border: none;
+    border-radius: 50px;
+    transition: background-color 0.3s;
+}
+
+.buttonlogr:hover {
+    background-color: var(--color-primary-variant);
+}
+
+.buttonlogr:hover::after {
+    content: " ←";
+}
+
+.logbtn a:last-child {
+    margin-bottom: 50px;
+}
+
+/*************************
+*******STATS******
+**************************/
+
+.container1 {
+    position: absolute;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.stats-box {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.card {
+    display: inline-table;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 30%;
+    transition: all 300ms ease;
+}
+
+.card:hover {
+box-shadow: none;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 7.5px 0;
+}
+
+.chart-card-wrapper {
+    display: flex ;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.chart-container-wrapper {
+    display: flex;    
+    justify-content: space-between; 
+    gap: 20px;      
+}
+
+.chart-container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex: 1;               
+    margin-bottom: 20px;
+    transition: all 300ms ease;
+}
+
+.chart-container:hover {
+box-shadow: none;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    padding: 5px;
+    border-bottom: 1px solid #ddd;
+}
+
+.export-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.export-btn:hover {
+    background-color: #45a049;
+}
+
